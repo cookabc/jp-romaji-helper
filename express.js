@@ -24,7 +24,17 @@ app.post('/convert', async (req, res) => {
   const { text } = req.body;
   try {
     const kuroshiro = await initializeKuroshiro();
-    const romaji = await kuroshiro.convert(text, { to: 'romaji' });
+    const characters = text.split('');
+    const convertedText = await Promise.all(characters.map(async char => {
+      try {
+        const romajiChar = await kuroshiro.convert(char, { to: 'romaji' });
+        return char === romajiChar ? char : `${char}(${romajiChar})`;
+      } catch (error) {
+        console.warn(`Failed to convert character: ${char}`);
+        return char;
+      }
+    }));
+    const romaji = convertedText.join(' ').replace(/\s+/g, ' ').trim();
     res.json({ romaji });
   } catch (error) {
     console.error('Error converting text:', error);
