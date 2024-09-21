@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <rect width="16" height="16" fill="#4285f4"/>
+  <text x="1" y="8" font-family="Arial" font-size="6" fill="white">あ</text>
+  <path d="M8 4 L12 8 L8 12" stroke="white" stroke-width="1" fill="none"/>
+  <text x="11" y="14" font-family="Arial" font-size="6" fill="white">A</text>
+</svg>
